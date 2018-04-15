@@ -11,11 +11,11 @@ import { Manufacturer, Offers, Price, ShippingDate, Title, ProductImage } from '
 import * as Theme from '../../theme'
 
 type Props = {
-  uri: string,
   removeProduct: Function,
   showProduct: Function,
   item: {
     title: string,
+    uri: string,
     manufacturer: string,
     price: number,
     shippingDate: string,

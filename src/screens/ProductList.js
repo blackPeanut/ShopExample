@@ -21,7 +21,7 @@ class ProductList extends Component<Props> {
   loadProducts = () => {
     this.props.dispatch(productsActions.fetchProductsBegin())
 
-    setTimeout(this.addLoadedProducts, 500)
+    setTimeout(this.addLoadedProducts, 2000)
   }
 
   addLoadedProducts = () => {
