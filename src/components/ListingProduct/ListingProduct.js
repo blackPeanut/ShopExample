@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 import { Manufacturer, Offers, Price, ShippingDate, Title, ProductImage } from './index'
-import * as Theme from '../../Theme'
+import * as Theme from '../../theme'
 
 type Props = {
   uri: string,
@@ -27,7 +27,6 @@ type Props = {
 
 export default class ListingProduct extends Component<Props> {
   render () {
-    console.log('item', this.props.item)
     const {
       // onClose,
       // onDetailsShow,

@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text
 } from 'react-native'
-import * as Theme from '../../Theme'
+import * as Theme from '../../theme'
 import getSymbolFromCurrency from 'currency-symbol-map'
 
 type Props = {

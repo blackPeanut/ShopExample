@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text
 } from 'react-native'
-import * as Theme from '../../Theme'
+import * as Theme from '../../theme'
 
 type Props = {
   children: React.Node,

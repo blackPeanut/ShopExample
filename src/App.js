@@ -5,9 +5,11 @@
  */
 
 import React, { Component } from 'react'
+import { Provider } from 'react-redux'
 import { StackNavigator } from 'react-navigation'
-import ProductList from './Screens/ProductList'
-import ProductCard from './Screens/ProductCard'
+import ProductList from './screens/ProductList'
+import ProductCard from './screens/ProductCard'
+import createReduxStore from './redux/createStore'
 
 const RootStack = StackNavigator({
   ProductList: {
@@ -20,6 +22,11 @@ const RootStack = StackNavigator({
 
 export default class App extends Component {
   render () {
-    return <RootStack />
+    const store = createReduxStore()
+    return (
+      <Provider store={store}>
+        <RootStack />
+      </Provider>
+    )
   }
 }
