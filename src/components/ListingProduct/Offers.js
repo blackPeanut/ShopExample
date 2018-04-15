@@ -9,17 +9,21 @@ import * as Theme from '../../theme'
 import { Price } from './index'
 
 type Props = {
-  children: React.Node,
-  startingPrice: Number,
-  currency: String
+  offers: number,
+  startingPrice: number,
+  currency: string
 };
 
 export function Offers (props: Props) {
-  const { startingPrice, currency } = props
+  const { startingPrice, currency, offers } = props
   return (
     <Text style={styles.text}>
-      {`${props.children} offers starting from `}
-      <Price style={styles.text} currency={currency}>{startingPrice}</Price>
+      {`${offers} offers starting from `}
+      <Price
+        style={styles.text}
+        currency={currency}
+        price={startingPrice}
+      />
     </Text>
   )
 }

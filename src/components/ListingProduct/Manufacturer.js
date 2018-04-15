@@ -8,12 +8,13 @@ import {
 import * as Theme from '../../theme'
 
 type Props = {
-  children: React.Node
+  manufacturer: string
 };
 
 export function Manufacturer (props: Props) {
+  const { manufacturer } = props
   return (
-    <Text style={styles.text}>{props.children}</Text>
+    <Text style={styles.text}>{`by ${manufacturer}`}</Text>
   )
 }
 

@@ -9,17 +9,17 @@ import * as Theme from '../../theme'
 import getSymbolFromCurrency from 'currency-symbol-map'
 
 type Props = {
-  children: React.Node,
+  price: number,
   currency: String,
   style: StyleSheet
 };
 
 export function Price (props: Props) {
-  const { currency, style } = props
+  const { currency, style, price } = props
   const cSymbol = getSymbolFromCurrency(currency.toUpperCase())
 
   return (
-    <Text style={[styles.text, style]}>{`${cSymbol}${props.children}`}</Text>
+    <Text style={[styles.text, style]}>{`${cSymbol}${price}`}</Text>
   )
 }
 

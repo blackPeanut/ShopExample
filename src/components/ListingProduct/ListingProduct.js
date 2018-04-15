@@ -12,8 +12,8 @@ import * as Theme from '../../theme'
 
 type Props = {
   uri: string,
-  onRemove: Function,
-  onDetailsShow: Function,
+  removeProduct: Function,
+  showProduct: Function,
   item: {
     title: string,
     manufacturer: string,
@@ -29,8 +29,8 @@ type Props = {
 export default class ListingProduct extends Component<Props> {
   render () {
     const {
-      onRemove,
-      // onDetailsShow,
+      removeProduct,
+      showProduct,
       item: {
         uri,
         title,
@@ -44,22 +44,24 @@ export default class ListingProduct extends Component<Props> {
       }
     } = this.props
 
-    return (
-      <TouchableOpacity style={styles.container}>
-        <ProductImage uri={uri} />
+    return <TouchableOpacity style={styles.container} onPress={showProduct}>
+      <ProductImage uri={uri}/>
 
-        <View style={styles.description}>
-          <Title idx={index}>{title}</Title>
-          <Manufacturer>{manufacturer}</Manufacturer>
-          <Price currency={currency}>{price}</Price>
-          <ShippingDate>{shippingDate}</ShippingDate>
-          <Offers startingPrice={startingPrice} currency={currency}>{offers}</Offers>
-        </View>
-        <TouchableOpacity style={styles.remove} onPress={onRemove}>
-          <Image style={styles.removeIcon} source={require('../../../static/icons/cancel.png')}/>
-        </TouchableOpacity>
+      <View style={styles.description}>
+        <Title idx={index} title={title}/>
+        <Manufacturer manufacturer={manufacturer}/>
+        <Price currency={currency} price={price}/>
+        <ShippingDate shippingDate={shippingDate}/>
+        <Offers
+          startingPrice={startingPrice}
+          currency={currency}
+          offers={offers}
+        />
+      </View>
+      <TouchableOpacity style={styles.remove} onPress={removeProduct}>
+        <Image style={styles.removeIcon} source={require('../../../static/icons/cancel.png')}/>
       </TouchableOpacity>
-    )
+    </TouchableOpacity>
   }
 }
 

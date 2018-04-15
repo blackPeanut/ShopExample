@@ -1,7 +1,7 @@
 import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_ERROR,
+  // FETCH_PRODUCTS_ERROR,
   PRODUCT_REMOVE
 } from '../productsActions'
 
@@ -30,14 +30,14 @@ export default function products (state = initialState, action) {
         items: action.payload.products
       }
 
-    case FETCH_PRODUCTS_ERROR:
-      // The request failed, but it did stop, so set loading to "false".
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error,
-        items: []
-      }
+    // case FETCH_PRODUCTS_ERROR:
+    //   // The request failed, but it did stop, so set loading to "false".
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     error: action.payload.error,
+    //     items: []
+    //   }
 
     case PRODUCT_REMOVE:
       // Remove selected product from list

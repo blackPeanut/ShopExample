@@ -9,11 +9,12 @@ import * as Theme from '../../theme'
 import moment from 'moment'
 
 type Props = {
-  children: React.Node
+  shippingDate: string
 };
 
 export function ShippingDate (props: Props) {
-  const date = moment(props.children)
+  const { shippingDate } = props
+  const date = moment(shippingDate)
   const nearestShippingDate = date.diff(moment(), 'days')
   const numeralDay = nearestShippingDate > 1 ? 'days' : 'day'
   return (

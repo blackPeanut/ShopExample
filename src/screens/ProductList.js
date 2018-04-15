@@ -32,7 +32,8 @@ class ProductList extends Component<Props> {
     return (
       <ListingProduct
         item={{...item, index}}
-        onRemove={() => this.removeProductPrompt(item.id, item.title)}
+        removeProduct={() => this.removeProductPrompt(item.id, item.title)}
+        showProduct={() => this.showProduct(item.id)}
       />
     )
   };
@@ -51,6 +52,10 @@ class ProductList extends Component<Props> {
       ],
       { cancelable: true }
     )
+  }
+
+  showProduct = (id) => {
+    this.props.navigation.navigate('ProductCard', { id })
   }
 
   render () {

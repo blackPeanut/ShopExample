@@ -6,17 +6,19 @@ import {
   Text
 } from 'react-native'
 import * as Theme from '../../theme'
+import { capitalize, cleanString } from '../../utils/utils'
 
 type Props = {
-  children: React.Node,
+  title: string,
   idx: Number
 };
 
 export function Title (props: Props) {
-  const { idx } = props
+  const { idx, title } = props
+  let cleanTitle = capitalize(cleanString(title))
   return (
     <Text style={styles.text} numberOfLines={2}>
-      {`${idx + 1}. ${props.children}`}
+      {`${idx + 1}. ${cleanTitle}`}
     </Text>
   )
 }
