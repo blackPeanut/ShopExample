@@ -4,14 +4,15 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native'
 import { Manufacturer, Offers, Price, ShippingDate, Title, ProductImage } from './index'
 import * as Theme from '../../theme'
 
 type Props = {
   uri: string,
-  onClose: Function,
+  onRemove: Function,
   onDetailsShow: Function,
   item: {
     title: string,
@@ -28,7 +29,7 @@ type Props = {
 export default class ListingProduct extends Component<Props> {
   render () {
     const {
-      // onClose,
+      onRemove,
       // onDetailsShow,
       item: {
         uri,
@@ -54,6 +55,9 @@ export default class ListingProduct extends Component<Props> {
           <ShippingDate>{shippingDate}</ShippingDate>
           <Offers startingPrice={startingPrice} currency={currency}>{offers}</Offers>
         </View>
+        <TouchableOpacity style={styles.remove} onPress={onRemove}>
+          <Image style={styles.removeIcon} source={require('../../../static/icons/cancel.png')}/>
+        </TouchableOpacity>
       </TouchableOpacity>
     )
   }
@@ -71,5 +75,14 @@ const styles = StyleSheet.create({
   description: {
     flex: 1,
     justifyContent: 'space-between'
+  },
+  remove: {
+    paddingHorizontal: 15,
+    paddingTop: 10,
+    paddingBottom: 20
+  },
+  removeIcon: {
+    width: 10,
+    height: 10
   }
 })

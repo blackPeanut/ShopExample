@@ -3,7 +3,8 @@
 import React, { Component } from 'react'
 import {
   ActivityIndicator,
-  FlatList
+  FlatList,
+  Alert
 } from 'react-native'
 import { connect } from 'react-redux'
 import ListingProduct from '../components/ListingProduct/ListingProduct'
@@ -20,14 +21,37 @@ class ProductList extends Component<Props> {
   loadProducts = () => {
     this.props.dispatch(productsActions.fetchProductsBegin())
 
-    setTimeout(this.addLoadedProducts, 2000)
+    setTimeout(this.addLoadedProducts, 500)
   }
 
   addLoadedProducts = () => {
     this.props.dispatch(productsActions.fetchProductsSuccess(staticProductsList))
   }
 
-  renderItem = ({ item, index }) => (<ListingProduct item={{...item, index}} />);
+  renderItem = ({ item, index }) => {
+    return (
+      <ListingProduct
+        item={{...item, index}}
+        onRemove={() => this.removeProductPrompt(item.id, item.title)}
+      />
+    )
+  };
+
+  removeProduct = (id) => {
+    this.props.dispatch(productsActions.productRemove(id))
+  }
+
+  removeProductPrompt = (id, title) => {
+    Alert.alert(
+      'Do you want to remove this product?',
+      `${title}`,
+      [
+        {text: 'Yes', onPress: () => this.removeProduct(id)},
+        {text: 'Cancel', onPress: null, style: 'cancel'}
+      ],
+      { cancelable: true }
+    )
+  }
 
   render () {
     if (this.props.products.loading) {

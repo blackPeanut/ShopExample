@@ -1,7 +1,8 @@
 import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_ERROR
+  FETCH_PRODUCTS_ERROR,
+  PRODUCT_REMOVE
 } from '../productsActions'
 
 const initialState = {
@@ -36,6 +37,14 @@ export default function products (state = initialState, action) {
         loading: false,
         error: action.payload.error,
         items: []
+      }
+
+    case PRODUCT_REMOVE:
+      // Remove selected product from list
+      let items = state.items.filter((el) => el.id !== action.payload.id)
+      return {
+        ...state,
+        items
       }
 
     default:
